@@ -2,10 +2,11 @@ const swaggerAutogen = require('swagger-autogen')();
 
 const doc = {
   info: {
-    title: 'Contacts API',
+    title: 'Pets API',
     description: 'Project for CSE341',
   },
-  host: 'cse341-1ptd.onrender.com/contacts'
+  host: 'cse341pets.onrender.com',
+  //host: 'cse341pets.onrender.com/users',
 };
 
 const outputFile = './swagger.json';
