@@ -1,0 +1,153 @@
+[
+    {
+      "id": "1",
+      "name": "Bella",
+      "species": "Dog",
+      "breed": "Labrador Retriever",
+      "age": 3,
+      "adoption_status": false,
+      "description": "A playful and energetic dog who loves fetch.",
+      "created_at": "2025-01-15T10:30:00Z"
+    },
+    {
+      "id": "2",
+      "name": "Mittens",
+      "species": "Cat",
+      "breed": "Maine Coon",
+      "age": 2,
+      "adoption_status": true,
+      "description": "A gentle giant who enjoys cuddles and naps in the sun.",
+      "created_at": "2025-01-18T14:00:00Z"
+    },
+    {
+      "id": "3",
+      "name": "Charlie",
+      "species": "Dog",
+      "breed": "Beagle",
+      "age": 4,
+      "adoption_status": false,
+      "description": "Curious and friendly, loves to follow scents.",
+      "created_at": "2025-01-20T08:45:00Z"
+    },
+    {
+      "id": "4",
+      "name": "Sunflower",
+      "species": "Bird",
+      "breed": "Cockatiel",
+      "age": 1,
+      "adoption_status": true,
+      "description": "A cheerful bird who loves to sing.",
+      "created_at": "2025-01-25T09:15:00Z"
+    },
+    {
+      "id": "5",
+      "name": "Nibbles",
+      "species": "Rabbit",
+      "breed": "Netherland Dwarf",
+      "age": 1,
+      "adoption_status": false,
+      "description": "A small, fluffy bunny with a curious personality.",
+      "created_at": "2025-01-28T11:10:00Z"
+    },
+    {
+      "id": "6",
+      "name": "Max",
+      "species": "Dog",
+      "breed": "German Shepherd",
+      "age": 5,
+      "adoption_status": true,
+      "description": "A loyal protector and highly intelligent companion.",
+      "created_at": "2025-01-29T12:45:00Z"
+    },
+    {
+      "id": "7",
+      "name": "Whiskers",
+      "species": "Cat",
+      "breed": "Siamese",
+      "age": 3,
+      "adoption_status": false,
+      "description": "Elegant and affectionate with a mischievous streak.",
+      "created_at": "2025-01-30T14:00:00Z"
+    },
+    {
+      "id": "8",
+      "name": "Peanut",
+      "species": "Hamster",
+      "breed": "Syrian",
+      "age": 1,
+      "adoption_status": false,
+      "description": "A tiny explorer with boundless energy.",
+      "created_at": "2025-02-01T08:00:00Z"
+    },
+    {
+      "id": "9",
+      "name": "Clover",
+      "species": "Rabbit",
+      "breed": "Lionhead",
+      "age": 2,
+      "adoption_status": true,
+      "description": "Fluffy and curious with a mane-like fur.",
+      "created_at": "2025-02-03T09:30:00Z"
+    },
+    {
+      "id": "10",
+      "name": "Echo",
+      "species": "Bird",
+      "breed": "Parrot",
+      "age": 7,
+      "adoption_status": false,
+      "description": "A talkative parrot with a colorful personality.",
+      "created_at": "2025-02-04T13:20:00Z"
+    },
+    {
+      "id": "11",
+      "name": "Shadow",
+      "species": "Dog",
+      "breed": "Husky",
+      "age": 4,
+      "adoption_status": true,
+      "description": "Energetic and adventurous, loves the snow.",
+      "created_at": "2025-02-05T16:00:00Z"
+    },
+    {
+      "id": "12",
+      "name": "Pumpkin",
+      "species": "Cat",
+      "breed": "Tabby",
+      "age": 2,
+      "adoption_status": false,
+      "description": "Playful and loves chasing strings.",
+      "created_at": "2025-02-06T10:15:00Z"
+    },
+    {
+      "id": "13",
+      "name": "Fang",
+      "species": "Lizard",
+      "breed": "Bearded Dragon",
+      "age": 3,
+      "adoption_status": false,
+      "description": "Calm and enjoys basking in the sun.",
+      "created_at": "2025-02-07T15:30:00Z"
+    },
+    {
+      "id": "14",
+      "name": "Luna",
+      "species": "Dog",
+      "breed": "Border Collie",
+      "age": 3,
+      "adoption_status": true,
+      "description": "Highly intelligent and loves to herd.",
+      "created_at": "2025-02-08T12:45:00Z"
+    },
+    {
+      "id": "15",
+      "name": "Blue",
+      "species": "Fish",
+      "breed": "Betta",
+      "age": 1,
+      "adoption_status": false,
+      "description": "A vibrant blue fish with a peaceful demeanor.",
+      "created_at": "2025-02-09T11:00:00Z"
+    }
+  ]
+  

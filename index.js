@@ -20,8 +20,8 @@ app // Main App
     res.setHeader('Access-Control-Allow-Origin', '*');
     next();
   })
-  .use('/pets', profRoute)
-  .use('/users', contactRoute);
+  .use('/pets', petRoute)
+  .use('/users', userRoute);
 
 // MongoDB Connection
 mongodb.initDb((err, mongodb) => {
