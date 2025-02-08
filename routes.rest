@@ -4,20 +4,26 @@ GET http://localhost:8080/pets
 
 ### Get 1 Pet
 
-GET http://localhost:8080/pets/67a6a531497bfe3e0a2bbb8f
+GET http://localhost:8080/pets/67a7886daffa2e1caba0d3e2
 
 ### Create a Pet
-POST http://localhost:8080/pets
+POST http://localhost:8080/pets 
+content-type: application/json
 
 {
-    "name": "string",
+    "name": "Fluffy",
     "species": "Dog",
-    "breed": "Labrador Retriever",
-    "age": 3,
+    "breed": "Cerberus",
+    "age": 3000,
     "adoption_status": false,
     "description": "A playful and energetic dog who loves fetch.",
+    "image_url": "https://example.com/fluffy.jpg",
     "created_at": "2025-01-15T10:30:00Z"
 }
+
+### Delete a Pet
+
+DELETE http://localhost:8080/pets/67a7855a8b7f3bc85caa5fe3
 
 ### Get All Users
 
@@ -29,7 +35,9 @@ GET http://localhost:8080/users/67a6a54d497bfe3e0a2bbba0
 
 ### Create a User
 
-POST http://localhost:8080/users HTTP/1.1 content-type: application/json
+POST http://localhost:8080/users HTTP/1.1 
+content-type: application/json
+
 {
     "username": "TestUser",
     "email": "testuser@test.com",

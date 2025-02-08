@@ -6,6 +6,7 @@
       "age": 3,
       "adoption_status": false,
       "description": "A playful and energetic dog who loves fetch.",
+      "image_url": "https://example.com/fluffy.jpg",
       "created_at": "2025-01-15T10:30:00Z"
     },
     {
@@ -15,6 +16,7 @@
       "age": 2,
       "adoption_status": true,
       "description": "A gentle giant who enjoys cuddles and naps in the sun.",
+      "image_url": "https://example.com/fluffy.jpg",
       "created_at": "2025-01-18T14:00:00Z"
     },
     {
@@ -24,6 +26,7 @@
       "age": 4,
       "adoption_status": false,
       "description": "Curious and friendly, loves to follow scents.",
+      "image_url": "https://example.com/fluffy.jpg",
       "created_at": "2025-01-20T08:45:00Z"
     },
     {
@@ -33,6 +36,7 @@
       "age": 1,
       "adoption_status": true,
       "description": "A cheerful bird who loves to sing.",
+      "image_url": "https://example.com/fluffy.jpg",
       "created_at": "2025-01-25T09:15:00Z"
     },
     {
@@ -42,6 +46,7 @@
       "age": 1,
       "adoption_status": false,
       "description": "A small, fluffy bunny with a curious personality.",
+      "image_url": "https://example.com/fluffy.jpg",
       "created_at": "2025-01-28T11:10:00Z"
     },
     {
@@ -51,6 +56,7 @@
       "age": 5,
       "adoption_status": true,
       "description": "A loyal protector and highly intelligent companion.",
+      "image_url": "https://example.com/fluffy.jpg",
       "created_at": "2025-01-29T12:45:00Z"
     },
     {
@@ -60,6 +66,7 @@
       "age": 3,
       "adoption_status": false,
       "description": "Elegant and affectionate with a mischievous streak.",
+      "image_url": "https://example.com/fluffy.jpg",
       "created_at": "2025-01-30T14:00:00Z"
     },
     {
@@ -69,6 +76,7 @@
       "age": 1,
       "adoption_status": false,
       "description": "A tiny explorer with boundless energy.",
+      "image_url": "https://example.com/fluffy.jpg",
       "created_at": "2025-02-01T08:00:00Z"
     },
     {
@@ -78,6 +86,7 @@
       "age": 2,
       "adoption_status": true,
       "description": "Fluffy and curious with a mane-like fur.",
+      "image_url": "https://example.com/fluffy.jpg",
       "created_at": "2025-02-03T09:30:00Z"
     },
     {
@@ -87,6 +96,7 @@
       "age": 7,
       "adoption_status": false,
       "description": "A talkative parrot with a colorful personality.",
+      "image_url": "https://example.com/fluffy.jpg",
       "created_at": "2025-02-04T13:20:00Z"
     },
     {
@@ -96,6 +106,7 @@
       "age": 4,
       "adoption_status": true,
       "description": "Energetic and adventurous, loves the snow.",
+      "image_url": "https://example.com/fluffy.jpg",
       "created_at": "2025-02-05T16:00:00Z"
     },
     {
@@ -105,6 +116,7 @@
       "age": 2,
       "adoption_status": false,
       "description": "Playful and loves chasing strings.",
+      "image_url": "https://example.com/fluffy.jpg",
       "created_at": "2025-02-06T10:15:00Z"
     },
     {
@@ -114,6 +126,7 @@
       "age": 3,
       "adoption_status": false,
       "description": "Calm and enjoys basking in the sun.",
+      "image_url": "https://example.com/fluffy.jpg",
       "created_at": "2025-02-07T15:30:00Z"
     },
     {
@@ -123,6 +136,7 @@
       "age": 3,
       "adoption_status": true,
       "description": "Highly intelligent and loves to herd.",
+      "image_url": "https://example.com/fluffy.jpg",
       "created_at": "2025-02-08T12:45:00Z"
     },
     {
@@ -132,6 +146,7 @@
       "age": 1,
       "adoption_status": false,
       "description": "A vibrant blue fish with a peaceful demeanor.",
+      "image_url": "https://example.com/fluffy.jpg",
       "created_at": "2025-02-09T11:00:00Z"
     }
   ]
