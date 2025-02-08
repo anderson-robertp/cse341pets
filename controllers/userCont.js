@@ -1,5 +1,6 @@
 const mongodb = require('../db/connect');
 const { ObjectId } = require('mongodb');
+const bcrypt = require('bcrypt');
 
 const getAllUsers = async (req, res) => {
   try {
@@ -16,10 +17,10 @@ const getAllUsers = async (req, res) => {
 const getUser = async (req, res) => {
   try {
     const userId = req.params.id;
-    console.log("UserId: " + userId);
+    //console.log("UserId: " + userId);
 
     const result = await mongodb.getDb().collection('users').findOne({ _id: new ObjectId(userId) });
-    console.log("Result: " +result);
+    //console.log("Result: " +result);
 
     if (result) {
       res.status(200).json(result);
@@ -32,29 +33,40 @@ const getUser = async (req, res) => {
 }
 
 const createUser = async (req, res) => {
-    try {
-        const user = {
-            username: req.body.username,
-            email: req.body.email,
-            github_id: req.body.github_id,
-            profile_url: req.body.profile_url,
-            avatar_url: req.body.avatar_url,
-            password: req.body.password,
-        };
-        const result = await mongodb.getDb().collection('users').insertOne(user);
+  try {
+    const { username, email, github_id, profile_url, avatar_url, password } = req.body;
+    //console.log("Username: " + username);
 
-        if (result.acknowledged) {
-      // Include the insertedId in the response
-        res.status(201).json({ message: 'User created successfully', id: result.insertedId });
-        console.log(result); // For testing/logging purposes
-        } else {
-        res.status(500).json({ message: 'Error creating User' });
-        }
-    } catch (error) {
+    // Validate required fields
+    if (!username || !email || !password) {
+      return res.status(400).json({ message: 'Username, email, and password are required' });
+    }
+
+    // Hash the password
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    const user = {
+      username,
+      email,
+      github_id: github_id || null,
+      profile_url: profile_url || '',
+      avatar_url: avatar_url || '',
+      password: hashedPassword,
+      created_at: new Date(),
+    };
+
+    const result = await mongodb.getDb().collection('users').insertOne(user);
+
+    if (result.acknowledged) {
+      res.status(201).json({ message: 'User created successfully', id: result.insertedId });
+    } else {
+      res.status(500).json({ message: 'Error creating user' });
+    }
+  } catch (error) {
     console.error('Error while creating user:', error);
     res.status(500).json({ message: 'An error occurred', error });
-    }
-}
+  }
+};
 
 const updateUser = async (req, res) => {
     try{
