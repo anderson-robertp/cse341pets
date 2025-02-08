@@ -119,9 +119,12 @@
               "items": {
                 "type": "object",
                 "properties": {
-                  "id": { "type": "string", "example": "user123" },
-                  "name": { "type": "string", "example": "John Doe" },
-                  "email": { "type": "string", "example": "john.doe@example.com" }
+                  "username": { "type": "string", "example": "Jane Doe" },
+                  "email": { "type": "string", "example": "jane.doe@example.com" },
+                  "github_id": { "type": "string", "example": "janedoe"},
+                  "profile_url": { "type": "string", "example": "http://example.com/janedoe" },
+                  "avatar_url": { "type": "string", "example": "http://example.com/avatar.jpg" },
+                  "password": { "type": "string", "example": "securepassword" }
                 }
               }
             }
@@ -186,8 +189,12 @@
             "schema": {
               "type": "object",
               "properties": {
-                "name": { "example": "Updated Name" },
-                "email": { "example": "updated@example.com" }
+                "username": { "type": "string", "example": "Jane Doe" },
+                "email": { "type": "string", "example": "jane.doe@example.com" },
+                "github_id": { "type": "string", "example": "janedoe"},
+                "profile_url": { "type": "string", "example": "http://example.com/janedoe" },
+                "avatar_url": { "type": "string", "example": "http://example.com/avatar.jpg" },
+                "password": { "type": "string", "example": "securepassword" }
               }
             }
           }
