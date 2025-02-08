@@ -138,8 +138,12 @@
             "schema": {
               "type": "object",
               "properties": {
-                "name": { "type": "string", "example": "Jane Doe" },
-                "email": { "type": "string", "example": "jane.doe@example.com" }
+                "username": { "type": "string", "example": "Jane Doe" },
+                "email": { "type": "string", "example": "jane.doe@example.com" },
+                "github_id": { "type": "string", "example": "janedoe"},
+                "profile_url": { "type": "string", "example": "http://example.com/janedoe" },
+                "avatar_url": { "type": "string", "example": "http://example.com/avatar.jpg" },
+                "password": { "type": "string", "example": "securepassword" }
               }
             }
           }
