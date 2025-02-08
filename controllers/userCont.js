@@ -15,7 +15,7 @@ const getAllUsers = async (req, res) => {
 
 const getUser = async (req, res) => {
   try {
-    const userId = new ObjectId(req.params.id);
+    const userId = req.params.id;
     const result = await mongodb.getDb().collection('users').find({ _id: userId });
     result.toArray().then((lists) => {
       res.status(200).json(lists[0]);
@@ -28,7 +28,6 @@ const getUser = async (req, res) => {
 const createUser = async (req, res) => {
     try {
         const user = {
-            id: req.body.id,
             username: req.body.username,
             email: req.body.email,
             github_id: req.body.github_id,
@@ -37,18 +36,24 @@ const createUser = async (req, res) => {
             password: req.body.password,
         };
         const result = await mongodb.getDb().collection('users').insertOne(user);
-        res.setHeader('Access-Control-Allow-Origin', '*');
-        res.status(201).json(result);
-        } catch (error) {
-            res.status(500).json({ message: error.message });
+
+        if (result.acknowledged) {
+      // Include the insertedId in the response
+        res.status(201).json({ message: 'User created successfully', id: result.insertedId });
+        console.log(result); // For testing/logging purposes
+        } else {
+        res.status(500).json({ message: 'Error creating User' });
         }
+    } catch (error) {
+    console.error('Error while creating user:', error);
+    res.status(500).json({ message: 'An error occurred', error });
+    }
 }
 
 const updateUser = async (req, res) => {
     try{
-        const userId = new ObjectId(req.params.id);
+        const userId = req.params.id;
         const user = {
-            id: req.body.id,
             username: req.body.username,
             email: req.body.email,
             github_id: req.body.github_id,
@@ -57,8 +62,14 @@ const updateUser = async (req, res) => {
             password: req.body.password,
         };
         const result = await mongodb.getDb().collection('users').replaceOne({ _id: userId }, user);
-        res.setHeader('Access-Control-Allow-Origin', '*');
-        res.status(200).json(result);
+
+        if (result.matchedCount === 0) {
+            res.status(404).json({ message: 'User not found' });
+        } else if (result.modifiedCount > 0) {
+            res.status(200).json({ message: 'User updated successfully' });
+        } else {
+            res.status(304).json({ message: 'No changes made to the User' });
+        }
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
@@ -66,10 +77,15 @@ const updateUser = async (req, res) => {
 
 const deleteUser = async (req, res) => {
     try{
-        const userId = new ObjectId(req.params.id);
+        const userId = new req.params.id;
+
         const result = await mongodb.getDb().collection('users').remove({ _id: userId }, true);
-        res.setHeader('Access-Control-Allow-Origin', '*');
-        res.status(204).json(result);
+
+        if (result.deletedCount > 0) {
+            res.status(204).json({ message: 'User deleted successfully' });
+        } else {
+            res.status(500).json(response.error || { message: 'Error deleting user' });
+        }
     } catch (error) {
         res.status(500).json({ message: error.message });
     }

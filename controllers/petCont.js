@@ -16,7 +16,7 @@ const getAllPets = async (req, res) => {
 
 const getPet = async (req, res) => {
   try {
-    const petId = new ObjectId(req.params.id);
+    const petId = req.params.id;
     const result = await mongodb.getDb().collection('pets').find({ _id: petId });
     result.toArray().then((lists) => {
       res.status(200).json(lists[0]);
@@ -29,7 +29,6 @@ const getPet = async (req, res) => {
 const createPet = async (req, res) => {
   try {
     const pet = {
-        id: req.body.id,
         name: req.body.name,
         species: req.body.species,
         breed: req.body.breed,
@@ -38,19 +37,26 @@ const createPet = async (req, res) => {
         descripiton: req.body.description,
         image: req.body.image,
     };
+
     const result = await mongodb.getDb().collection('pets').insertOne(pet);
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.status(201).json(result);
-    } catch (error) {
-        res.status(500).json({ message: error.message });
+
+    if (result.acknowledged) {
+      // Include the insertedId in the response
+      res.status(201).json({ message: 'pet created successfully', id: result.insertedId });
+      //console.log(result); // For testing/logging purposes
+    } else {
+      res.status(500).json({ message: 'Error creating pet' });
     }
-}
+  } catch (error) {
+    console.error('Error while creating pet:', error);
+    res.status(500).json({ message: 'An error occurred', error });
+    }
+};
 
 const updatePet = async (req, res) => {
     try{
-        const petId = new ObjectId(req.params.id);
+        const petId = req.params.id;
         const pet = {
-            id: req.body.id,
             name: req.body.name,
             species: req.body.species,
             breed: req.body.breed,
@@ -60,21 +66,22 @@ const updatePet = async (req, res) => {
             image: req.body.image,
         };
         const result = await mongodb.getDb().collection('pets').replaceOne({ _id: petId }, pet);
+
         if (result.matchedCount === 0) {
-            res.status(404).json({ message: 'Contact not found' });
+            res.status(404).json({ message: 'pet not found' });
           } else if (result.modifiedCount > 0) {
-            res.status(200).json({ message: 'Contact updated successfully' });
+            res.status(200).json({ message: 'pet updated successfully' });
           } else {
-            res.status(304).json({ message: 'No changes made to the contact' });
+            res.status(304).json({ message: 'No changes made to the pet' });
           }
     } catch (error) {
-        ('Error updating contact:', err.message);
+        ('Error updating pet:', err.message);
         res.status(500).json({ message: 'An error occurred', error: err.message });
     }
 };
 
 const deletePet = async (req, res) => {
-    const petId = new ObjectId(req.params.id);
+    const petId = req.params.id;
 
     const result = await mongodb.getDb().collection('pets').deleteOne({ _id: petId });
 
