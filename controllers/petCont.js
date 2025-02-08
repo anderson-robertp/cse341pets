@@ -17,10 +17,16 @@ const getAllPets = async (req, res) => {
 const getPet = async (req, res) => {
   try {
     const petId = req.params.id;
-    const result = await mongodb.getDb().collection('pets').find({ _id: petId });
-    result.toArray().then((lists) => {
-      res.status(200).json(lists[0]);
-    });
+    console.log(petId);
+
+    const result = await mongodb.getDb().collection('pets').findOne({_id: new ObjectId(petId)});
+    console.log(result);
+
+    if (result) {
+      res.status(200).json(result);
+    } else {
+      res.status(404).json({ message: 'Pet not found' });
+    }
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -36,6 +42,7 @@ const createPet = async (req, res) => {
         adoption_status: req.body.adoption_status,
         descripiton: req.body.description,
         image: req.body.image,
+        created_at: new Date(),
     };
 
     const result = await mongodb.getDb().collection('pets').insertOne(pet);

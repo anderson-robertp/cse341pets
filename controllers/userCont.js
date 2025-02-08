@@ -16,10 +16,16 @@ const getAllUsers = async (req, res) => {
 const getUser = async (req, res) => {
   try {
     const userId = req.params.id;
-    const result = await mongodb.getDb().collection('users').find({ _id: userId });
-    result.toArray().then((lists) => {
-      res.status(200).json(lists[0]);
-    });
+    console.log("UserId: " + userId);
+
+    const result = await mongodb.getDb().collection('users').findOne({ _id: new ObjectId(userId) });
+    console.log("Result: " +result);
+
+    if (result) {
+      res.status(200).json(result);
+    } else {
+      res.status(404).json({ message: 'User not found' });
+    }
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

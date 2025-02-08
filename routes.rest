@@ -1,5 +1,41 @@
+### Get all pets
+
 GET http://localhost:8080/pets
 
-###
+### Get 1 Pet
+
+GET http://localhost:8080/pets/67a6a531497bfe3e0a2bbb8f
+
+### Create a Pet
+POST http://localhost:8080/pets
+
+{
+    "name": "string",
+    "species": "Dog",
+    "breed": "Labrador Retriever",
+    "age": 3,
+    "adoption_status": false,
+    "description": "A playful and energetic dog who loves fetch.",
+    "created_at": "2025-01-15T10:30:00Z"
+}
+
+### Get All Users
 
 GET http://localhost:8080/users
+
+### Get 1 User
+
+GET http://localhost:8080/users/67a6a54d497bfe3e0a2bbba0
+
+### Create a User
+
+POST http://localhost:8080/users HTTP/1.1 content-type: application/json
+{
+    "username": "TestUser",
+    "email": "testuser@test.com",
+    "github_id": "testUser",
+    "profile_url": "https://github.com/tech-guru87",
+    "avatar_url": "https://avatars.githubusercontent.com/u/101",
+    "password": "longpassword",
+    "created_at": "2025-02-07T12:00:00Z",
+}
