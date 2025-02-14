@@ -5,6 +5,7 @@ const petRoute = require('./routes/petRoute');
 const userRoute = require('./routes/userRoute');
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger.json');
+const errorHandler = require('./error/errorHandler');
 
 const app = express();
 const port = process.env.PORT || 8080;
@@ -17,6 +18,9 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 // Routes
 app.use('/pets', petRoute);
 app.use('/users', userRoute);
+
+// Error Handling Middleware
+app.use(errorHandler);
 
 // MongoDB Connection
 mongodb.initDb((err, mongodb) => {

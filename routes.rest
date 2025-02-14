@@ -20,6 +20,21 @@ content-type: application/json
     "image_url": "https://example.com/fluffy.jpg",
 }
 
+### Update a Pet
+
+PUT http://localhost:8080/pets/67a7886daffa2e1caba0d3e2
+content-type: application/json
+
+{
+    "name": "Updated Fluffy",
+    "species": "Dog",
+    "breed": "Cerberus",
+    "age": 3000,
+    "adoption_status": false,
+    "description": "A playful and energetic dog who loves fetch.",
+    "image_url": "https://example.com/fluffy.jpg",
+}
+
 ### Delete a Pet
 
 DELETE http://localhost:8080/pets/67a7855a8b7f3bc85caa5fe3
