@@ -42,6 +42,12 @@ const createUser = async (req, res) => {
       return res.status(400).json({ message: 'Username, email, and password are required' });
     }
 
+    // Check if the user already exists
+    const existingUser = await mongodb.getDb().collection('users').findOne({ email });
+    if (existingUser) {
+      return res.status(409).json({ message: 'User already exists' });
+    }
+
     // Hash the password
     const hashedPassword = await bcrypt.hash(password, 10);
 
