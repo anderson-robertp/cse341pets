@@ -110,22 +110,32 @@ const updateUser = async (req, res) => {
 };
 
 const deleteUser = async (req, res) => {
-    try{
-        const userId = new req.params.id;
-        if (!ObjectId.isValid(userId)) {
+  try {
+      const userId = req.params.id;
+      console.log("UserId: " + userId);
+
+      // Validate ID format before converting
+      if (!ObjectId.isValid(userId)) {
           return res.status(400).json({ message: "Invalid user ID format" });
-        }
+      }
 
-        const result = await mongodb.getDb().collection('users').remove({ _id: new ObjectId(userId) }, true);
+      //const objectId = new ObjectId(userId); // Convert to ObjectId
 
-        if (result.deletedCount > 0) {
-            res.status(204).json({ message: 'User deleted successfully' });
-        } else {
-            res.status(500).json(response.error || { message: 'Error deleting user' });
-        }
-    } catch (error) {
-        res.status(500).json({ message: error.message });
-    }
-}
+      // Use deleteOne to remove the user by ID
+      const result = await mongodb
+        .getDb()
+        .collection("users")
+        .deleteOne({ _id: new ObjectId(userId) });
+      //console.log(result);
+
+      if (result.deletedCount > 0) {
+          return res.status(204).send(); // No content response
+      } else {
+          return res.status(404).json({ message: "User not found" });
+      }
+  } catch (error) {
+      res.status(500).json({ message: "An error occurred", error: error.message });
+  }
+};
 
 module.exports = { getAllUsers, getUser, createUser, updateUser, deleteUser };

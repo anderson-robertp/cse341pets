@@ -112,7 +112,10 @@ const deletePet = async (req, res) => {
       return res.status(400).json({ message: 'Invalid pet ID' });
     }
 
-    const result = await mongodb.getDb().collection('pets').deleteOne({_id: new ObjectId(petId)});
+    const result = await mongodb
+      .getDb()
+      .collection('pets')
+      .deleteOne({_id: new ObjectId(petId)});
     //console.log(result);
 
     if (result.deletedCount > 0) {
