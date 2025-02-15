@@ -11,28 +11,28 @@ POST http://localhost:8080/pets
 content-type: application/json
 
 {
-    "name": "Fluffy",
-    "species": "Dog",
-    "breed": "Cerberus",
-    "age": 3000,
-    "adoption_status": false,
-    "description": "A playful and energetic dog who loves fetch.",
-    "image_url": "https://example.com/fluffy.jpg",
+  "name": "test local",
+  "species": "Dog",
+  "breed": "Cerberus",
+  "age": 30,
+  "adoption_status": false,
+  "description": "A playful and energetic dog who loves fetch.",
+  "image_url": "https://example.com/fluffy.jpg"
 }
 
 ### Update a Pet
 
-PUT http://localhost:8080/pets/67a7886daffa2e1caba0d3e2
+PUT http://localhost:8080/pets/67b0e69f558c2f736580b97f
 content-type: application/json
 
 {
-    "name": "Updated Fluffy",
-    "species": "Dog",
-    "breed": "Cerberus",
-    "age": 3000,
-    "adoption_status": false,
-    "description": "A playful and energetic dog who loves fetch.",
-    "image_url": "https://example.com/fluffy.jpg",
+  "name": "Updated test local",
+  "species": "Dog",
+  "breed": "Cerberus",
+  "age": 30,
+  "adoption_status": false,
+  "description": "A playful and energetic dog who loves fetch.",
+  "image_url": "https://example.com/fluffy.jpg"
 }
 
 ### Delete a Pet
@@ -53,8 +53,8 @@ POST http://localhost:8080/users HTTP/1.1
 content-type: application/json
 
 {
-  "username": "johndoe",
-  "email": "johndoe@example.com",
+  "username": "test",
+  "email": "test@example.com",
   "github_id": "12345",
   "profile_url": "https://github.com/johndoe",
   "avatar_url": "https://example.com/avatar.jpg",
@@ -95,7 +95,7 @@ POST https://cse341pets.onrender.com/pets
 content-type: application/json
 
 {
-    "name": "Fluffy",
+    "name": "Test",
     "species": "Dog",
     "breed": "Cerberus",
     "age": 3000,

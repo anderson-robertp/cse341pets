@@ -44,9 +44,13 @@ const createPet = async (req, res) => {
 
     // Check if pet with the same name already exists
     const existingPet = await mongodb.getDb().collection('pets').findOne({ name });
-    if (existingPet.name === name && existingPet.species === species) {
-      return res.status(409).json({ message: 'Pet with the same name already exists' });
+    console.log(`Existing Pet:${existingPet} Input:${name}`);
+    if (existingPet) {
+      if (existingPet.name === name && existingPet.species === species) {
+        return res.status(409).json({ message: 'Pet with the same name already exists' });
+      }
     }
+      
 
     const pet = {
       name,
