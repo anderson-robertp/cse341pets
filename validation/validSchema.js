@@ -3,7 +3,7 @@ const { description } = require("@hapi/joi/lib/base");
 
 const petSchema = joi.object({
     name: joi.string().min(3).max(30).required(),
-    species: joi.string().valid("cat", "dog", "fish").required(),
+    species: joi.string().required(),
     breed: joi.string().optional(),
     age: joi.number().integer().min(0).max(30).required(),
     adoption_status: joi.string().valid("available", "adopted").default("available"),
