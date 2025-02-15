@@ -6,7 +6,7 @@ const petSchema = joi.object({
     species: joi.string().required(),
     breed: joi.string().optional(),
     age: joi.number().integer().min(0).max(30).required(),
-    adoption_status: joi.string().valid("available", "adopted").default("available"),
+    adoption_status: joi.string().lowercase().valid("available", "adopted").default("available"),
     description: joi.string().optional(),
     image: joi.string().uri().optional(),
 });
