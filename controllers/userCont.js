@@ -75,29 +75,39 @@ const createUser = async (req, res) => {
 };
 
 const updateUser = async (req, res) => {
-    try{
-        const userId = req.params.id;
-        const user = {
-            username: req.body.username,
-            email: req.body.email,
-            github_id: req.body.github_id,
-            profile_url: req.body.profile_url,
-            avatar_url: req.body.avatar_url,
-            password: req.body.password,
-        };
-        const result = await mongodb.getDb().collection('users').replaceOne({ _id: userId }, user);
+  try {
+    const userId = req.params.id;
 
-        if (result.matchedCount === 0) {
-            res.status(404).json({ message: 'User not found' });
-        } else if (result.modifiedCount > 0) {
-            res.status(200).json({ message: 'User updated successfully' });
-        } else {
-            res.status(304).json({ message: 'No changes made to the User' });
-        }
-    } catch (error) {
-        res.status(500).json({ message: error.message });
+    // Validate ID format
+    if (!ObjectId.isValid(userId)) {
+      return res.status(400).json({ message: "Invalid user ID format" });
     }
-}
+
+    // Hash password if updating
+    let updateData = { ...req.body };
+    if (req.body.password) {
+      const salt = await bcrypt.genSalt(10);
+      updateData.password = await bcrypt.hash(req.body.password, salt);
+    }
+
+    // Update user using $set to modify only specified fields
+    const result = await mongodb
+      .getDb()
+      .collection("users")
+      .updateOne({ _id: new ObjectId(userId) }, { $set: updateData });
+
+    if (result.matchedCount === 0) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    if (result.modifiedCount > 0) {
+      return res.status(200).json({ message: "User updated successfully" });
+    } else {
+      return res.status(304).json({ message: "No changes made to the User" });
+    }
+  } catch (error) {
+    res.status(500).json({ message: "An error occurred", error: error.message });
+  }
+};
 
 const deleteUser = async (req, res) => {
     try{

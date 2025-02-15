@@ -45,7 +45,7 @@ GET http://localhost:8080/users
 
 ### Get 1 User
 
-GET http://localhost:8080/users/67a78ae72ce6151aaa3d62c6
+GET http://localhost:8080/users/67b0e9d25140235dea376451
 
 ### Create a User
 
@@ -63,7 +63,7 @@ content-type: application/json
 
 ### Update a User
 
-PUT http://localhost:8080/users/67a78ae72ce6151aaa3d62c6 HTTP/1.1
+PUT http://localhost:8080/users/67b0e9d25140235dea376451 HTTP/1.1
 content-type: application/json
 
 {
