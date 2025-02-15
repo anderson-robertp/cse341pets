@@ -30,9 +30,9 @@
                 "species": { "example": "Dog" },
                 "breed": { "example": "Labrador" },
                 "age": { "example": 3 },
-                "adoption_status": { "example": "Available" },
+                "adoption_status": { "example": true },
                 "description": { "example": "Friendly and energetic" },
-                "image": { "example": "http://example.com/image.jpg" }
+                "image_url": { "example": "http://example.com/image.jpg" }
               }
             }
           }
@@ -79,9 +79,9 @@
                 "species": { "example": "Updated Species" },
                 "breed": { "example": "Updated Breed" },
                 "age": { "example": 4 },
-                "adoption_status": { "example": "Adopted" },
+                "adoption_status": { "example": true },
                 "description": { "example": "Updated Description" },
-                "image": { "example": "http://example.com/updated-image.jpg" }
+                "image_url": { "example": "http://example.com/updated-image.jpg" }
               }
             }
           }
