@@ -112,8 +112,11 @@ const updateUser = async (req, res) => {
 const deleteUser = async (req, res) => {
     try{
         const userId = new req.params.id;
+        if (!ObjectId.isValid(userId)) {
+          return res.status(400).json({ message: "Invalid user ID format" });
+        }
 
-        const result = await mongodb.getDb().collection('users').remove({ _id: userId }, true);
+        const result = await mongodb.getDb().collection('users').remove({ _id: new ObjectId(userId) }, true);
 
         if (result.deletedCount > 0) {
             res.status(204).json({ message: 'User deleted successfully' });
