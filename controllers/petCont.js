@@ -4,7 +4,11 @@ const { ObjectId } = require('mongodb');
 
 const getAllPets = async (req, res) => {
   try {
-    const result = await mongodb.getDb().collection('pets').find();
+    const result = await mongodb
+    .getDb()
+    .collection('pets')
+    .find();
+    
     result.toArray().then((lists) => {
       //res.setHeader('Access-Control-Allow-Origin', '*');
       res.status(200).json(lists);

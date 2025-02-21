@@ -162,3 +162,7 @@ content-type: application/json
 ### Delete a User
 
 DELETE https://cse341pets.onrender.com/users/67b0e798558c2f736580b980
+
+###
+
+GET https://cse341-project-2-dafc.onrender.com/cars
