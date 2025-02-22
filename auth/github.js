@@ -6,7 +6,7 @@ dotenv.config();
 passport.use(new GitHubStrategy({
     clientID: process.env.LOCAL_CLIENT_ID,
     clientSecret: process.env.LOCAL_SECRET,
-    callbackURL: "http://localhost:8080/auth/github/callback"
+    callbackURL: process.env.CALLBACK_URL,
 }, async (accessToken, refreshToken, profile, done) => {
     // Here, check if the user exists in your database
     // If not, create a new user with profile info

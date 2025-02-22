@@ -1,3 +1,13 @@
+### Authentication
+### Login
+POST http://localhost:8080/auth/github
+content-type: application/json
+
+{
+  "username": "test",
+  "password": "test"
+}
+
 ### Get all pets
 
 GET http://localhost:8080/pets
