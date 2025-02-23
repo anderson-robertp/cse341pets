@@ -40,6 +40,16 @@ app.use('/pets', petRoute);
 app.use('/users', userRoute);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument, options));
 app.use('/auth', authRoute);
+app.get('/logout', (req, res) => {
+  req.logout((err) => {
+    if (err) return res.status(500).json({ message: "Logout failed" });
+
+    req.session.destroy(() => {
+      res.clearCookie('connect.sid'); // Clear session cookie
+      res.redirect('/'); // Redirect to homepage or login page
+    });
+  });
+});
 
 // Error Handling Middleware
 app.use(errorHandler);

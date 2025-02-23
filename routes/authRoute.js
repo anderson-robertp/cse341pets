@@ -36,10 +36,21 @@ router.get('/github/callback',
 });*/
 
 // Logout
-router.get('/logout', (req, res) => {
+/*router.get('/logout', (req, res) => {
     req.logout(() => {
         res.json({ message: "Logged out successfully" });
     });
-});
+});*/
+router.get('/logout', (req, res) => {
+    req.logout((err) => {
+      if (err) return res.status(500).json({ message: "Logout failed" });
+  
+      req.session.destroy(() => {
+        res.clearCookie('connect.sid'); // Clear session cookie
+        res.redirect('/'); // Redirect to homepage or login page
+      });
+    });
+  });
+  
 
 module.exports = router;
