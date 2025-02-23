@@ -12,6 +12,14 @@ const passport = require('./auth/github');
 
 const app = express();
 const port = process.env.PORT || 8080;
+const options = {
+  swaggerOptions: {
+    oauth: {
+      clientId: process.env.LOCAL_CLIENT_ID,
+      clientSecret: process.env.LOCAL_SECRET,
+    }
+  }
+};
 
 // Middleware
 app.use(cors());
@@ -30,7 +38,7 @@ app.use(passport.session());
 // Routes
 app.use('/pets', petRoute);
 app.use('/users', userRoute);
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument, options));
 app.use('/auth', authRoute);
 
 // Error Handling Middleware

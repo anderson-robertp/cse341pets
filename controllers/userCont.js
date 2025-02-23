@@ -138,4 +138,63 @@ const deleteUser = async (req, res) => {
   }
 };
 
-module.exports = { getAllUsers, getUser, createUser, updateUser, deleteUser };
+const getUserByEmail = async (email) => {
+  try {
+    const user = await mongodb.getDb().collection('users').findOne({ email });
+    return user;
+  } catch (error) {
+    console.error('Error fetching user by email:', error);
+    throw error;
+  }
+};
+
+const getUserById = async (userId) => {
+  try {
+    const user = await mongodb.getDb().collection('users').findOne({ _id: new ObjectId(userId) });
+    return user;
+  } catch (error) {
+    console.error('Error fetching user by ID:', error);
+    throw error;
+  }
+};
+
+const getUserByGithubId = async (githubId) => {
+  try {
+    const user = await mongodb.getDb().collection('users').findOne({ github_id: githubId });
+    return user;
+  } catch (error) {
+    console.error('Error fetching user by GitHub ID:', error);
+    throw error;
+  }
+}
+
+const createGitUser = async (userData) => {
+  try {
+    const { username, email, github_id, profile_url, avatar_url } = userData;
+
+    // Check if the user already exists
+    const existingUser = await mongodb.getDb().collection('users').findOne({ github_id });
+    if (existingUser) {
+      return existingUser;
+    }
+
+    // Create a new user in the database
+    const newUser = {
+      username,
+      email,
+      github_id,
+      profile_url,
+      avatar_url,
+      created_at: new Date(),
+      password: null, // Password is not needed for OAuth users
+    };
+
+    const result = await mongodb.getDb().collection('users').insertOne(newUser);
+    return result.acknowledged ? newUser : null;
+  } catch (error) {
+    console.error('Error creating GitHub user:', error);
+    throw error;
+  }
+}
+
+module.exports = { getAllUsers, getUser, createUser, updateUser, deleteUser, getUserByEmail, getUserById, getUserByGithubId, createGitUser };
